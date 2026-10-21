@@ -3,7 +3,7 @@ services:
     name: sitecheck
     runtime: docker
     plan: free
-    healthCheckPath: /list
+    healthCheckPath: /health
     envVars:
       - key: SITECHECK_PASSWORD
         sync: false   # wordt bij deploy gevraagd: kies een wachtwoord voor de web-interface

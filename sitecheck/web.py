@@ -22,7 +22,7 @@ PASSWORD = os.environ.get("SITECHECK_PASSWORD", "").strip()
 @app.before_request
 def _auth():
     """Eenvoudige wachtwoordbeveiliging (HTTP Basic) als SITECHECK_PASSWORD is gezet."""
-    if not PASSWORD:
+    if not PASSWORD or request.path == "/health":
         return None
     a = request.authorization
     if a and a.password == PASSWORD:
@@ -82,6 +82,11 @@ async function loadPrev(){const r=await fetch('/list');const l=await r.json();
   document.getElementById('prev').innerHTML=l.length?'<ul>'+l.map(f=>'<li><a href="/rapport/'+f+'" target="_blank">'+f+'</a></li>').join('')+'</ul>':'<span style="color:#667085">Nog geen rapporten.</span>'}
 loadPrev();
 </script></body></html>"""
+
+
+@app.get("/health")
+def health():
+    return "ok"
 
 
 @app.get("/")
