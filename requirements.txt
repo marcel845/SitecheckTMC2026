@@ -1,0 +1,6 @@
+requests>=2.31
+beautifulsoup4>=4.12
+lxml>=4.9
+flask>=3.0
+# optioneel, alleen voor --render (JS-sites):
+# playwright>=1.40   → daarna: playwright install chromium

@@ -1,0 +1,8 @@
+services:
+  sitecheck:
+    build: .
+    ports: ["5050:10000"]
+    environment:
+      SITECHECK_PASSWORD: "kies-een-wachtwoord"
+    volumes: ["./rapporten:/data/rapporten"]
+    restart: unless-stopped
